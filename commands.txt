@@ -1,0 +1,60 @@
+Optional command line arguments:
+
+    -Dcuke.base.url=http://server.com  [Default: http://localhost:8080]
+
+    -Dcuke.driver=xxx  [Default: firefox]
+            where xxx is one of (htmlunit, firefox, chrome, ie, safari)
+            
+    -Dcuke.enable.native.events=false [Default: false]
+
+    -Dcuke.headless  (Headless display support using Xvfb. Currently only supported by FirefoxDriver.)
+    -Dcuke.headless.display=:1  (Display to use for Xvfb, e.g. :1 or :20)  [Default: :1]
+
+    -Dcuke.features=FEATURE_EXPRESSION  [Default: src/main/features]
+            where FEATURE_EXPRESSION is one of:
+            src/main/features/specific_subdirectory  (Runs all features under this subdirectory)
+            src/main/features/component_one/some.feature  (Runs the given feature)
+            src/main/features/component_one/some.feature:12  (Runs the scenario on line 12 of some.feature)
+            src/main/features/component_one/some.feature:12:22  (Runs the scenarios on lines 12 and 22 of some.feature)
+            NOTE: Multiple feature paths can be specified by enclosing the argument in quotation marks
+            For example:
+            -Dcuke.features='src/main/features/path1 src/main/features/path2'
+
+    -Dcuke.tags=TAG_EXPRESSION
+            where TAG_EXPRESSION is one of:
+            @SingleTag  (e.g -Dcuke.tags=@SingleTag)
+            @FirstTag,@OrSecondTag  (e.g -Dcuke.tags=@FirstTag,@OrSecondTag)
+            '@FirstTag --tags @AndSecondTag'  (e.g -Dcuke.tags='@FirstTag --tags @AndSecondTag')
+            ~@AnythingButThisTag  (e.g (NOT) -Dcuke.tags='~@AnythingButThisTag')
+
+    -Dcuke.name=TEXT  (Only execute scenario names which contain the given text)
+            where TEXT is one of:
+            SomeWord  (e.g. -Dcuke.name=SomeWord)
+            'Partial scenario words'  (e.g. -Dcuke.name='Partial scenario words')
+
+    -Dcuke.timeout=10  (Number of seconds to wait when looking up dynamic elements) [Default: 10]
+
+    -Dcuke.rerun  (Re-runs the previous failures specified in target/cuke_failures.txt)
+            NOTE: Do not run the 'clean' phase or the file will be deleted. Either don't run clean, or move
+                  this file out of target and use the option below to run it.
+    -Dcuke.rerun.file=path/to/cuke_failures.txt  (Re-runs the features specified in the file)
+
+    -Dcuke.debug  (Enables debugging support, waits for remote debugger connection)
+    -Dcuke.debug.port=1234  [Default: 4000]
+    -Dcuke.debug.suspend=false (Specifies whether execution should wait for remote debugger connection) [Default: true]
+
+    -Dcuke.color=false  (Enable colored console output) [Default: true]
+            NOTE: With the default being true, this option only needs to be specified when disabling.
+
+
+Project specific extensions:
+
+    -Dcuke.equella.base.url=http://equella.server.com  [Default: http://nightly.ole-equella.pearsoncmg.com]
+
+    -Dcuke.equella.institution=institution [Default: features-dev]
+
+    -Dcuke.rumba.sso.base.url=https://rumba.sso.server.com  [Default: https://sso.rumba.int.pearsoncmg.com/sso]
+
+    -Dcuke.rumba.user=username [no default]
+    
+    -Dcuke.htmlunit.javascript.disable=htmlunitjavascriptdisable [Default: false]
